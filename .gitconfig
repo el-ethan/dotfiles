@@ -1,0 +1,15 @@
+[user]
+	email = elethan@gmail.com
+	name = el-ethan
+[core]
+	editor = "emacs -Q"
+	excludefile = /home/ethan/.gitignore_global
+[push]
+	 default = simple
+[color]
+	ui = true
+[alias]
+	st = status
+   	co = checkout
+        ci = commit
+	logg = "log --graph --decorate --oneline --abbrev-commit --all"
