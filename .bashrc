@@ -19,13 +19,15 @@ export VISUAL=$EDITOR
 
 mycomputer=$(hostname)
 
-HOMEPATH="/home/ethan/Dropbox/development/kivy_fork/kivy"
+KIVYPATH="/home/ethan/Dropbox/development/kivy_fork/kivy"
 
-if [[ $MYCOMPUTER == "ethan-ThinkPad-X200" ]]; then
-    export PYTHONPATH="$PYTHONPATH:$HOMEPATH:/home/ethan/Dropbox/development"
-else
-    export PYTHONPATH="$PYTHONPATH:/home/ethan/git"
-fi
+export PYTHONPATH="$PYTHONPATH:$KIVYPATH"
+
+# if [[ $MYCOMPUTER == "ethan-ThinkPad-X200" ]]; then
+#     export PYTHONPATH="$PYTHONPATH:$HOMEPATH:/home/ethan/Dropbox/development"
+# else
+#     export PYTHONPATH="$PYTHONPATH:/home/ethan/git"
+# fi
 
 ## Aliases
 alias dback='~/Dropbox/development/shell_scripts/dback.sh'
@@ -39,6 +41,11 @@ alias mv='mv -i'
 alias cp='cp -i'
 # From http://askubuntu.com/a/22043/396191
 alias sudo='sudo '
+
+# Virtualenv options
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Dropbox/development
+source $HOME/.local/bin/virtualenvwrapper.sh
 
 ## Ryan's options
 IGNOREEOF=2
