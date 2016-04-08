@@ -23,18 +23,6 @@ KIVYPATH="/home/ethan/Dropbox/development/kivy_fork/kivy"
 
 export PYTHONPATH="$PYTHONPATH:$KIVYPATH"
 
-# if [[ $MYCOMPUTER == "ethan-ThinkPad-X200" ]]; then
-#     export PYTHONPATH="$PYTHONPATH:$HOMEPATH:/home/ethan/Dropbox/development"
-# else
-#     export PYTHONPATH="$PYTHONPATH:/home/ethan/git"
-# fi
-
-## Aliases
-alias dback='~/Dropbox/development/shell_scripts/dback.sh'
-
-# Fixes ?bug? in Pycharm where keyboard stops working
-alias nimei='killall -9 ibus-x11'
-
 # Command redefinitions
 alias rm='rm -i'
 alias mv='mv -i'
@@ -45,7 +33,7 @@ alias sudo='sudo '
 # Virtualenv options
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Dropbox/development
-source $HOME/.local/bin/virtualenvwrapper.sh
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
 ## Ryan's options
 IGNOREEOF=2
