@@ -27,11 +27,8 @@ else
     export PYTHONPATH="$PYTHONPATH:/home/ethan/git"
 fi
 
-## Aliases
-alias dback='~/Dropbox/development/shell_scripts/dback.sh'
-
-# Fixes ?bug? in Pycharm where keyboard stops working
-alias nimei='killall -9 ibus-x11'
+# Aliases
+alias cdd='cd $HOME/Dropbox/development/'
 
 # Command redefinitions
 alias rm='rm -i'
