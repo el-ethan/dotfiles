@@ -267,4 +267,3 @@ fi
 
 export PATH="/usr/lib/ccache:$PATH"
 export USE_CCACHE=1
-source /opt/android/path.sh
