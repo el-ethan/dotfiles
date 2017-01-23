@@ -31,6 +31,7 @@ fi
 alias cdd='cd $HOME/Dropbox/development/'
 
 # Command redefinitions
+alias network='sudo service network-manager restart'
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'

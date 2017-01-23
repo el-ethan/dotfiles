@@ -11,5 +11,5 @@
 [alias]
 	st = status
    	co = checkout
-        ci = commit
+    ci = commit
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
