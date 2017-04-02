@@ -1,0 +1,13 @@
+[user]
+	email = eskinner@alightanalytics.com
+	name = Ethan Skinner
+[push]
+        default = simple
+[color]
+	ui = true
+[alias]
+	st = status
+   	co = checkout
+	logg = "log --graph --decorate --oneline --abbrev-commit --all"
+[core]
+	editor = emacs
