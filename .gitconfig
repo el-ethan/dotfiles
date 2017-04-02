@@ -10,4 +10,4 @@
    	co = checkout
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
 [core]
-	editor = emacs
+	editor = emacs -Q
