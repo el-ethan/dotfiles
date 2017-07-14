@@ -11,3 +11,6 @@
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
 [core]
 	editor = emacs -Q
+[merge]
+	tool = kdiff3
+	tool = diffmerge
