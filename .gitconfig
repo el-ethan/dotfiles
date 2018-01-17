@@ -9,8 +9,8 @@
 	st = status
    	co = checkout
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
+        br = "branch --sort=-committerdate"
 [core]
 	editor = emacs -Q
 [merge]
-	tool = kdiff3
 	tool = diffmerge
