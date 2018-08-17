@@ -143,21 +143,9 @@ export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]${SHORTDIR}\[\033[00m\]
 
 unset color_prompt force_color_prompt
 
-# Work-related environment variables
-
-# DATABASE_NAME='dev-sanitized-production'
-# PWRD='_48NgN79fsi0wsJJN6G'
-
-DATABASE_NAME='dev-caleb-cm2'
-PWRD='dev-xxx-123'
-
-
-export SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://ops:${PWRD}@${DATABASE_NAME}.cgra0isgqxac.us-east-1.rds.amazonaws.com:5432/prod"
+source ~/.secrets
 
 echo -e "\nUsing database: \033[0;34m${DATABASE_NAME}\033[0m\n"
-
-export AWS_ACCESS_KEY_ID=AKIAJC743YZZ5O5UQTAA
-export AWS_SECRET_ACCESS_KEY=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
 
 sed -i '' "s#current \= .*#current \= $SQLALCHEMY_DATABASE_URI#" ~/.config/pgcli/config
 

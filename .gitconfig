@@ -9,7 +9,7 @@
 	st = status
    	co = checkout
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
-        br = "branch --sort=-committerdate"
+        br = "branch --sort=committerdate"
 [core]
 	editor = emacs -Q
 [merge]
