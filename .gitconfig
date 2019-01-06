@@ -2,7 +2,7 @@
 	email = elethan@gmail.com
 	name = el-ethan
 [core]
-	editor = "emacs -Q"
+	editor = "emacs-gtk -Q"
 	excludefile = /home/ethan/.gitignore_global
 [push]
 	 default = simple
