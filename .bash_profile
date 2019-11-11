@@ -18,10 +18,10 @@ IGNOREEOF=42
 # PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\w\[\033[m\]\$ "
 
 # Show alight tasks
-tail -n +3 ~/org_files/alight.org
-alias inbox='tail -n +3 ~/org_files/alight.org'
-# Virtualenvwrapper stuff
+# tail -n +3 ~/org_files/alight.org
+# alias inbox='tail -n +3 ~/org_files/alight.org'
 
+# Virtualenvwrapper stuff
 export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
 
@@ -30,7 +30,12 @@ source ~/git-completion.bash
 alias ll='ls -al'
 alias emacs='open /Applications/Emacs.app --args'
 alias ww='history | grep'
-alias pipeline='python /Users/alight/development/gaia/devops/pipeline.py'
+alias pipeline='python -m devops.pipeline'
+alias ddd='(cd ~/development/deja-vu-app/ && npm run start:dev)'
+alias portal='python app_portal.py runserver'
+alias build_portal='(cd ui/client_portal/ && npm run build) && python app_portal.py runserver'
+alias build_dev='(cd ui/client_portal/ && npm run build-js-dev) && python app_portal.py runserver'
+# alias pc-lint='/usr/local/lib/node_modules/bin/pc-lint'
 
 # Eternal bash history.
 # ---------------------
@@ -143,10 +148,26 @@ export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]${SHORTDIR}\[\033[00m\]
 
 unset color_prompt force_color_prompt
 
+# Rollbar
+
+# export ROLLBAR_ENABLED=true
+export FLASK_ENV=development
+
+#####################
+
+# Sensitive environment variables
 source ~/.secrets
+
+# export PRE_QA_INSTANCE_IP="$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$PRE_QA_INSTANCE_NAME" --output text --query 'Reservations[*].Instances[*].NetworkInterfaces[*].Association.PublicIp')"
 
 echo -e "\nUsing database: \033[0;34m${DATABASE_NAME}\033[0m\n"
 
 sed -i '' "s#current \= .*#current \= $SQLALCHEMY_DATABASE_URI#" ~/.config/pgcli/config
 
-workon gaia
+workon gaia-py3
+
+export EDITOR=emacs
+
+# BS workaround
+export REDIS_HOST_URI=''
+export GAIA_ROOT='/Users/alight/development/gaia/'
