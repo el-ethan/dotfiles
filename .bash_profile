@@ -1,4 +1,6 @@
 export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH"
+export BASH_SILENCE_DEPRECATION_WARNING=1
+export DIM_LOCAL_FANVIEW_PATH="$HOME/development/si-dimension/src/fanthreesixty/"
 
 IGNOREEOF=42
 
@@ -25,17 +27,14 @@ IGNOREEOF=42
 export WORKON_HOME=~/.envs
 source /usr/local/bin/virtualenvwrapper.sh
 
-source ~/git-completion.bash
+# source ~/git-completion.bash
 
 alias ll='ls -al'
 alias emacs='open /Applications/Emacs.app --args'
 alias ww='history | grep'
 alias pipeline='python -m devops.pipeline'
 alias ddd='(cd ~/development/deja-vu-app/ && npm run start:dev)'
-alias portal='python app_portal.py runserver'
-alias build_portal='(cd ui/client_portal/ && npm run build) && python app_portal.py runserver'
-alias build_dev='(cd ui/client_portal/ && npm run build-js-dev) && python app_portal.py runserver'
-# alias pc-lint='/usr/local/lib/node_modules/bin/pc-lint'
+alias buildandrun='node linkToLocalDimension.js fts-components fanview && (cd ../si-dimension && nvm use && script/server -q)'
 
 # Eternal bash history.
 # ---------------------
@@ -160,14 +159,15 @@ source ~/.secrets
 
 # export PRE_QA_INSTANCE_IP="$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$PRE_QA_INSTANCE_NAME" --output text --query 'Reservations[*].Instances[*].NetworkInterfaces[*].Association.PublicIp')"
 
-echo -e "\nUsing database: \033[0;34m${DATABASE_NAME}\033[0m\n"
+# echo -e "\nUsing database: \033[0;34m${DATABASE_NAME}\033[0m\n"
 
-sed -i '' "s#current \= .*#current \= $SQLALCHEMY_DATABASE_URI#" ~/.config/pgcli/config
+# sed -i '' "s#current \= .*#current \= $SQLALCHEMY_DATABASE_URI#" ~/.config/pgcli/config
 
-workon gaia-py3
+export EDITOR=code
 
-export EDITOR=emacs
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# BS workaround
-export REDIS_HOST_URI=''
-export GAIA_ROOT='/Users/alight/development/gaia/'
+cd ~/development/si-dimension
+nvm use

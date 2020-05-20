@@ -11,6 +11,6 @@
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
         br = "branch --sort=committerdate"
 [core]
-	editor = emacs -Q
+	editor = code
 [merge]
 	tool = diffmerge

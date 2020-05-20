@@ -15,7 +15,7 @@
         "generators": true,
         "modules": true,
         "spread": true,
-        "templateStrings": true,
+        "templateStrings": true
     },
     "rules": {
         "eqeqeq": 2,
@@ -25,6 +25,6 @@
         "eol-last": 2,
         "no-whitespace-before-property": 2,
         "space-in-parens": 2,
-        "array-bracket-spacing": 2,
+        "array-bracket-spacing": 2
     }
 }
