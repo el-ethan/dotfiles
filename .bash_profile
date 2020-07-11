@@ -1,4 +1,6 @@
-export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
+
+# export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export DIM_LOCAL_FANVIEW_PATH="$HOME/development/si-dimension/src/fanthreesixty/"
 
@@ -19,13 +21,9 @@ IGNOREEOF=42
 
 # PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\w\[\033[m\]\$ "
 
-# Show alight tasks
-# tail -n +3 ~/org_files/alight.org
-# alias inbox='tail -n +3 ~/org_files/alight.org'
-
 # Virtualenvwrapper stuff
-export WORKON_HOME=~/.envs
-source /usr/local/bin/virtualenvwrapper.sh
+# export WORKON_HOME=~/.envs
+# source /usr/local/bin/virtualenvwrapper.sh
 
 # source ~/git-completion.bash
 
@@ -169,5 +167,49 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-cd ~/development/si-dimension
-nvm use
+nvm use 12.13.0
+
+##### REDIS SERVER #####
+function rediscom() {
+  echo ''
+  echo "'redstat' - checks the status of Redis; to see if it is running."
+  echo "'redstart' - starts Redis"
+  echo "'redstop' - stops Redis"
+  echo "'redrestart' - stops Redis and then starts it again"
+  echo "'rediscom' - shows the available aliases created for manipulating the Redis-CLI"
+  echo ''
+}
+
+alias redstart='start_redis'
+alias redstop='stop_redis'
+alias redrestart='stop_redis && start_redis'
+alias redstat='redis_status'
+
+function start_redis() {
+  # nohup redis-server /usr/local/etc/redis.conf > /dev/null 2>&1 &
+  brew services start redis
+}
+
+function stop_redis() {
+  # redis-cli shutdown
+  brew services stop redis
+}
+
+function redis_status () {
+  redis-cli time
+  if [ $? = 0 ]; then
+    echo "Redis is running."
+  else
+    echo "Redis is NOT running."
+  fi
+}
+
+# redstat
+
+### END REDIS STUFF ###
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# Added by install_latest_perl_osx.pl
+[ -r /Users/ethan/.bashrc ] && source /Users/ethan/.bashrc
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"

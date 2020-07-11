@@ -1,5 +1,5 @@
 [user]
-	email = eskinner@alightanalytics.com
+	email = ethan.skinner@backlotcars.com
 	name = Ethan Skinner
 [push]
         default = simple
@@ -14,3 +14,5 @@
 	editor = code
 [merge]
 	tool = diffmerge
+[pull]
+	ff = only
