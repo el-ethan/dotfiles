@@ -2,7 +2,6 @@ export PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
 
 # export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export BASH_SILENCE_DEPRECATION_WARNING=1
-export DIM_LOCAL_FANVIEW_PATH="$HOME/development/si-dimension/src/fanthreesixty/"
 
 IGNOREEOF=42
 
@@ -30,9 +29,7 @@ IGNOREEOF=42
 alias ll='ls -al'
 alias emacs='open /Applications/Emacs.app --args'
 alias ww='history | grep'
-alias pipeline='python -m devops.pipeline'
 alias ddd='(cd ~/development/deja-vu-app/ && npm run start:dev)'
-alias buildandrun='node linkToLocalDimension.js fts-components fanview && (cd ../si-dimension && nvm use && script/server -q)'
 
 # Eternal bash history.
 # ---------------------
