@@ -29,7 +29,9 @@ IGNOREEOF=42
 alias ll='ls -al'
 alias emacs='open /Applications/Emacs.app --args'
 alias ww='history | grep'
-alias ddd='(cd ~/development/deja-vu-app/ && npm run start:dev)'
+alias run_migrations='bin/rake db:migrate RAILS_ENV=development';
+alias staging-ls="git branch --list 'origin/master_pre_production_*' -a --sort=committerdate | tail -n 5 | sed -e 's/\(remotes\/origin\/\)//g'"
+alias boing="SPRING=1 rails test"
 
 # Eternal bash history.
 # ---------------------
@@ -205,6 +207,17 @@ function redis_status () {
 
 ### END REDIS STUFF ###
 
+init-solr(){
+  bundle exec rake sunspot:solr:stop RAILS_ENV=test
+  bundle exec rake sunspot:solr:start
+}
+init-solr-test(){
+  bundle exec rake sunspot:solr:stop
+  bundle exec rake sunspot:solr:start RAILS_ENV=test
+}
+
+alias initsolr='init-solr'
+alias initsolrtest='init-solr-test'
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # Added by install_latest_perl_osx.pl
 [ -r /Users/ethan/.bashrc ] && source /Users/ethan/.bashrc
