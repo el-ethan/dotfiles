@@ -26,12 +26,16 @@ IGNOREEOF=42
 
 # source ~/git-completion.bash
 
-alias ll='ls -al'
-alias emacs='open /Applications/Emacs.app --args'
 alias ww='history | grep'
 alias run_migrations='bin/rake db:migrate RAILS_ENV=development';
 alias staging-ls="git branch --list 'origin/master_pre_production_*' -a --sort=committerdate | tail -n 5 | sed -e 's/\(remotes\/origin\/\)//g'"
 alias boing="SPRING=1 rails test"
+alias ddd='(cd ~/localdev/deja-vu-app/ && PORT=9000 npm run start:dev)'
+
+# Colorize terminal
+alias ll='ls -alG'
+export LSCOLORS="ExGxBxDxCxEgEdxbxgxcxd"
+export GREP_OPTIONS="--color"
 
 # Eternal bash history.
 # ---------------------
@@ -218,8 +222,10 @@ init-solr-test(){
 
 alias initsolr='init-solr'
 alias initsolrtest='init-solr-test'
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 # Added by install_latest_perl_osx.pl
 [ -r /Users/ethan/.bashrc ] && source /Users/ethan/.bashrc
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
