@@ -1,15 +1,33 @@
 [user]
-	email = elethan@gmail.com
-	name = el-ethan
-[core]
-	editor = "emacs-gtk -Q"
-	excludefile = /home/ethan/.gitignore_global
+	email = 10249884+el-ethan@users.noreply.github.com
+	name = Ethan Skinner
 [push]
 	 default = simple
 [color]
 	ui = true
+# Gary Bernhardt cargo cult
+[color "diff-highlight"]
+	  oldNormal = red
+	  oldHighlight = red "#500000"
+	  newNormal = green
+	  newHighlight = green "#003000"
+[color "diff"]
+	  meta = 11
+	  frag = magenta bold
+	  commit = yellow bold
+	  old = red
+	  new = green
+	  whitespace = "#ffff00" reverse
 [alias]
 	st = status
    	co = checkout
-    ci = commit
+	dc = diff --find-copies-harder --cached
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
+	br = "branch --sort=committerdate"
+[core]
+	editor = code
+    excludefile = /home/ethan/.gitignore_global
+[merge]
+	tool = diffmerge
+[pull]
+	ff = only
