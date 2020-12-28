@@ -1,34 +1,17 @@
-
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
-##########
-
-# Editor
-
-if [ -z "$SSH_CONNECTION" ]; then
-    alias ec="emacsclient -c -n"
-    export EDITOR="emacsclient -c"
-    export ALTERNATE_EDITOR=""
-else
-    export EDITOR=$(type -P emacs || type -P nano)
-fi
-
-export VISUAL=$EDITOR
+export VISUAL='emacs -nw -Q'
 
 mycomputer=$(hostname)
 
-HOMEPATH="/home/ethan/Dropbox/development/kivy_fork/kivy"
-
-if [[ $MYCOMPUTER == "ethan-ThinkPad-X200" ]]; then
-    export PYTHONPATH="$PYTHONPATH:$HOMEPATH:/home/ethan/Dropbox/development"
-else
-    export PYTHONPATH="$PYTHONPATH:/home/ethan/git"
-fi
 
 # Aliases
 alias cdd='cd $HOME/Dropbox/development/'
+alias update-resume='
+emacs \
+-u "$(id -un)" \
+--batch \
+--eval "(load user-init-file)" \
+/home/ethan/Dropbox/org_files/org_work/resume/skinner_resume.org \
+-f org-latex-export-to-pdf'
 
 # Command redefinitions
 alias network='sudo service network-manager restart'
@@ -37,6 +20,7 @@ alias mv='mv -i'
 alias cp='cp -i'
 # From http://askubuntu.com/a/22043/396191
 alias sudo='sudo '
+alias emacs='emacs-gtk'
 
 ## Ryan's options
 IGNOREEOF=2
@@ -265,3 +249,8 @@ fi
 
 export PATH="/usr/lib/ccache:$PATH"
 export USE_CCACHE=1
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
