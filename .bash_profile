@@ -1,7 +1,9 @@
-export PATH="/Applications/Postgres.app/Contents/Versions/10/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/11/bin:$PATH"
 
 # export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+DEV_HOME="~/localdev"
 
 IGNOREEOF=42
 
@@ -29,8 +31,15 @@ IGNOREEOF=42
 alias ww='history | grep'
 alias run_migrations='bin/rake db:migrate RAILS_ENV=development';
 alias staging-ls="git branch --list 'origin/master_pre_production_*' -a --sort=committerdate | tail -n 5 | sed -e 's/\(remotes\/origin\/\)//g'"
-alias boing="SPRING=1 rails test"
+alias t="SPRING=1 rails test"
 alias ddd='(cd ~/localdev/deja-vu-app/ && PORT=9000 npm run start:dev)'
+alias todos='code -n /Users/ethan/Dropbox/deaddrop/backlot.taskpaper'
+alias edit_profile='code -n ~/.bash_profile'
+alias backlot='code /Users/ethan/Dropbox/deaddrop/backlot.md'
+
+# Project aliases
+alias archie="cd $DEV_HOME/archie && code ."
+alias webapp="cd $DEV_HOME/webapp && code ."
 
 # Colorize terminal
 alias ll='ls -alG'
@@ -164,7 +173,7 @@ source ~/.secrets
 
 # sed -i '' "s#current \= .*#current \= $SQLALCHEMY_DATABASE_URI#" ~/.config/pgcli/config
 
-export EDITOR=code
+export EDITOR="vi +startinsert"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -182,6 +191,15 @@ function rediscom() {
   echo "'rediscom' - shows the available aliases created for manipulating the Redis-CLI"
   echo ''
 }
+
+
+alias sshinit='ssh_init'
+function ssh_init() {
+  # For deploying webapp
+  ssh-add ~/.ssh/id_rsa_blc_vpn
+  ssh-add ~/.ssh/id_rsa
+}
+
 
 alias redstart='start_redis'
 alias redstop='stop_redis'
@@ -215,6 +233,7 @@ init-solr(){
   bundle exec rake sunspot:solr:stop RAILS_ENV=test
   bundle exec rake sunspot:solr:start
 }
+
 init-solr-test(){
   bundle exec rake sunspot:solr:stop
   bundle exec rake sunspot:solr:start RAILS_ENV=test
@@ -229,3 +248,4 @@ alias initsolrtest='init-solr-test'
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
+echo `curl -s 'https://api.coindesk.com/v1/bpi/currentprice/btc.json' | jq -r '.bpi.USD.rate'`
