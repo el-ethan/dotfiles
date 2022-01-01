@@ -1,5 +1,3 @@
-export PATH="/Applications/Postgres.app/Contents/Versions/11/bin:$PATH"
-
 # export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
@@ -29,17 +27,9 @@ IGNOREEOF=42
 # source ~/git-completion.bash
 
 alias ww='history | grep'
-alias run_migrations='bin/rake db:migrate RAILS_ENV=development';
-alias staging-ls="git branch --list 'origin/master_pre_production_*' -a --sort=committerdate | tail -n 5 | sed -e 's/\(remotes\/origin\/\)//g'"
-alias t="SPRING=1 rails test"
 alias ddd='(cd ~/localdev/deja-vu-app/ && PORT=9000 npm run start:dev)'
-alias todos='code -n /Users/ethan/Dropbox/deaddrop/backlot.taskpaper'
 alias edit_profile='code -n ~/.bash_profile'
-alias backlot='code /Users/ethan/Dropbox/deaddrop/backlot.md'
 
-# Project aliases
-alias archie="cd $DEV_HOME/archie && code ."
-alias webapp="cd $DEV_HOME/webapp && code ."
 
 # Colorize terminal
 alias ll='ls -alG'
@@ -159,93 +149,15 @@ unset color_prompt force_color_prompt
 
 # Rollbar
 
-# export ROLLBAR_ENABLED=true
-export FLASK_ENV=development
-
 #####################
 
 # Sensitive environment variables
 source ~/.secrets
 
-# export PRE_QA_INSTANCE_IP="$(aws ec2 describe-instances --filters "Name=tag:Name,Values=$PRE_QA_INSTANCE_NAME" --output text --query 'Reservations[*].Instances[*].NetworkInterfaces[*].Association.PublicIp')"
-
-# echo -e "\nUsing database: \033[0;34m${DATABASE_NAME}\033[0m\n"
-
-# sed -i '' "s#current \= .*#current \= $SQLALCHEMY_DATABASE_URI#" ~/.config/pgcli/config
-
-export EDITOR="vi +startinsert"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-nvm use 12.13.0
-
-##### REDIS SERVER #####
-function rediscom() {
-  echo ''
-  echo "'redstat' - checks the status of Redis; to see if it is running."
-  echo "'redstart' - starts Redis"
-  echo "'redstop' - stops Redis"
-  echo "'redrestart' - stops Redis and then starts it again"
-  echo "'rediscom' - shows the available aliases created for manipulating the Redis-CLI"
-  echo ''
-}
-
-
-alias sshinit='ssh_init'
-function ssh_init() {
-  # For deploying webapp
-  ssh-add ~/.ssh/id_rsa_blc_vpn
-  ssh-add ~/.ssh/id_rsa
-}
-
-
-alias redstart='start_redis'
-alias redstop='stop_redis'
-alias redrestart='stop_redis && start_redis'
-alias redstat='redis_status'
-
-function start_redis() {
-  # nohup redis-server /usr/local/etc/redis.conf > /dev/null 2>&1 &
-  brew services start redis
-}
-
-function stop_redis() {
-  # redis-cli shutdown
-  brew services stop redis
-}
-
-function redis_status () {
-  redis-cli time
-  if [ $? = 0 ]; then
-    echo "Redis is running."
-  else
-    echo "Redis is NOT running."
-  fi
-}
-
-# redstat
-
-### END REDIS STUFF ###
-
-init-solr(){
-  bundle exec rake sunspot:solr:stop RAILS_ENV=test
-  bundle exec rake sunspot:solr:start
-}
-
-init-solr-test(){
-  bundle exec rake sunspot:solr:stop
-  bundle exec rake sunspot:solr:start RAILS_ENV=test
-}
-
-alias initsolr='init-solr'
-alias initsolrtest='init-solr-test'
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-# Added by install_latest_perl_osx.pl
 [ -r /Users/ethan/.bashrc ] && source /Users/ethan/.bashrc
 
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
-echo `curl -s 'https://api.coindesk.com/v1/bpi/currentprice/btc.json' | jq -r '.bpi.USD.rate'`
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"eval "$(/opt/homebrew/bin/brew shellenv)"
