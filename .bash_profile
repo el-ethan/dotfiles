@@ -7,27 +7,6 @@ DEV_HOME="~/localdev"
 
 IGNOREEOF=42
 
-# export PS1="\u:\W\\$ "
-# python virtual env, however it comes to be
-# if [ -z ${VIRTUAL_ENV+x} ]
-# then
-#     VENV_NOTICE=""
-# else
-#     VENV_NOTICE=" (py: $(basename "$VIRTUAL_ENV"))"
-# fi
-
-# PS1='whatever $VENV_NOTICE else'
-
-# # export
-
-# PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\w\[\033[m\]\$ "
-
-# Virtualenvwrapper stuff
-# export WORKON_HOME=~/.envs
-# source /usr/local/bin/virtualenvwrapper.sh
-
-# source ~/git-completion.bash
-
 alias ww='history | grep'
 alias run_migrations='bin/rake db:migrate RAILS_ENV=development';
 alias staging-ls="git branch --list 'origin/master_pre_production_*' -a --sort=committerdate | tail -n 5 | sed -e 's/\(remotes\/origin\/\)//g'"
@@ -36,6 +15,8 @@ alias ddd='(cd ~/localdev/deja-vu-app/ && PORT=9000 npm run start:dev)'
 alias todos='code -n /Users/ethan/Dropbox/deaddrop/backlot.taskpaper'
 alias edit_profile='code -n ~/.bash_profile'
 alias backlot='code /Users/ethan/Dropbox/deaddrop/backlot.md'
+
+alias railz='bundle install && bin/rake db:migrate RAILS_ENV=development && rails s'
 
 # Project aliases
 alias archie="cd $DEV_HOME/archie && code ."
@@ -158,10 +139,6 @@ export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]${SHORTDIR}\[\033[00m\]
 unset color_prompt force_color_prompt
 
 # Rollbar
-
-# export ROLLBAR_ENABLED=true
-export FLASK_ENV=development
-
 #####################
 
 # Sensitive environment variables
@@ -173,13 +150,11 @@ source ~/.secrets
 
 # sed -i '' "s#current \= .*#current \= $SQLALCHEMY_DATABASE_URI#" ~/.config/pgcli/config
 
-export EDITOR="vi +startinsert"
+export EDITOR="emacs"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-nvm use 12.13.0
 
 ##### REDIS SERVER #####
 function rediscom() {
@@ -238,7 +213,7 @@ init-solr-test(){
   bundle exec rake sunspot:solr:stop
   bundle exec rake sunspot:solr:start RAILS_ENV=test
 }
-
+  
 alias initsolr='init-solr'
 alias initsolrtest='init-solr-test'
 
@@ -248,4 +223,4 @@ alias initsolrtest='init-solr-test'
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-echo `curl -s 'https://api.coindesk.com/v1/bpi/currentprice/btc.json' | jq -r '.bpi.USD.rate'`
+# echo `curl -s 'https://api.coindesk.com/v1/bpi/currentprice/btc.json' | jq -r '.bpi.USD.rate'`
