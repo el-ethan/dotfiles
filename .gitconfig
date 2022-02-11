@@ -25,6 +25,8 @@
 	dc = diff --find-copies-harder --cached
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
 	br = "branch --sort=committerdate"
+	pub = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+	cm = "commit -m"
 [merge]
 	tool = diffmerge
 [pull]
