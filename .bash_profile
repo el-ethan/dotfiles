@@ -1,5 +1,6 @@
 # export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export BASH_SILENCE_DEPRECATION_WARNING=1
+export PATH=/opt/homebrew/bin:$PATH
 
 DEV_HOME="~/localdev"
 
@@ -154,10 +155,10 @@ unset color_prompt force_color_prompt
 # Sensitive environment variables
 source ~/.secrets
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 [ -r /Users/ethan/.bashrc ] && source /Users/ethan/.bashrc
 
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"eval "$(/opt/homebrew/bin/brew shellenv)"
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
