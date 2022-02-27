@@ -1,31 +1,9 @@
-# export PATH="\$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export BASH_SILENCE_DEPRECATION_WARNING=1
 export PATH=/opt/homebrew/bin:$PATH
 
 DEV_HOME="~/localdev"
 
 IGNOREEOF=42
-
-# export PS1="\u:\W\\$ "
-# python virtual env, however it comes to be
-# if [ -z ${VIRTUAL_ENV+x} ]
-# then
-#     VENV_NOTICE=""
-# else
-#     VENV_NOTICE=" (py: $(basename "$VIRTUAL_ENV"))"
-# fi
-
-# PS1='whatever $VENV_NOTICE else'
-
-# # export
-
-# PS1="\[\033[36m\]\u\[\033[m\]:\[\033[33;1m\]\w\[\033[m\]\$ "
-
-# Virtualenvwrapper stuff
-# export WORKON_HOME=~/.envs
-# source /usr/local/bin/virtualenvwrapper.sh
-
-# source ~/git-completion.bash
 
 alias ww='history | grep'
 alias ddd='(cd ~/localdev/deja-vu-app/ && PORT=9000 npm run start:dev)'
@@ -148,10 +126,6 @@ export PS1='\[\033[01;32m\]\u\[\033[00m\]:\[\033[01;34m\]${SHORTDIR}\[\033[00m\]
 
 unset color_prompt force_color_prompt
 
-# Rollbar
-
-#####################
-
 # Sensitive environment variables
 source ~/.secrets
 
@@ -161,4 +135,3 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 [ -r /Users/ethan/.bashrc ] && source /Users/ethan/.bashrc
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-
