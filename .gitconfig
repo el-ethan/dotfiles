@@ -31,3 +31,5 @@
 	ff = only
 [pager]
 	branch = false
+[core]
+	editor = code --wait
