@@ -1,5 +1,5 @@
 [user]
-	email = 10249884+el-ethan@users.noreply.github.com
+	email = ethan.skinner@equipmentshare.com
 	name = Ethan Skinner
 [push]
 	default = simple
@@ -25,6 +25,7 @@
 	dc = diff --find-copies-harder --cached
 	logg = "log --graph --decorate --oneline --abbrev-commit --all"
 	br = "branch --sort=committerdate"
+	pub = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
 [merge]
 	tool = diffmerge
 [pull]

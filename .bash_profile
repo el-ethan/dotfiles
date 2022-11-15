@@ -1,5 +1,37 @@
 export BASH_SILENCE_DEPRECATION_WARNING=1
-export PATH=/opt/homebrew/bin:$PATH
+export PATH="/opt/homebrew/bin:$PATH"
+# export PATH="$HOME/.poetry/bin:$PATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+# export PATH="$PYENV_ROOT/bin:$PATH"
+# export LDFLAGS="-L/usr/local/opt/zlib/lib -L/usr/local/opt/bzip2/lib"
+# export CPPFLAGS="-I/usr/local/opt/zlib/include -I/usr/local/opt/bzip2/include"
+# export CFLAGS=-Wno-error=implicit-function-declaration
+# export CPPFLAGS=-I/usr/local/opt/openssl/include
+
+# export LDFLAGS="-L$(brew --prefix openssl)/lib" 
+# export CFLAGS="-I$(brew --prefix openssl)/include"
+# export PYTHON_KEYRING_BACKEND=keyring.backends.fail.Keyring
+
+export VISUAL=code
+
+export PATH="$HOME/.poetry/bin:$PATH"
+
+export LDFLAGS="-L/opt/homebrew/opt/zlib/lib -L/opt/homebrew/opt/libheif/lib -L/opt/homebrew/opt/gettext/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/zlib/include -I/opt/homebrew/opt/libheif/include -I/opt/homebrew/opt/gettext/include"
+export CONFIG=~/localdev/equipmentshare-api/test.local.ini
+
+# poetry env use ~/.pyenv/versions/3.8.13/bin/python
+# poetry shell
+# export LDFLAGS="-L/opt/homebrew/opt/libheif/lib"
+# export CPPFLAGS="-I/opt/homebrew/opt/libheif/include"
+# export CRYPTOGRAPHY_SUPPRESS_LINK_FLAGS=1 
+# export LDFLAGS="$(brew --prefix openssl@1.1)/lib/libssl.a $(brew --prefix openssl@1.1)/lib/libcrypto.a" 
+# export CFLAGS="-I$(brew --prefix openssl@1.1)/include"
+
+
+
+alias pAuth='poetry config http-basic.codeartifact-dev aws $(aws codeartifact get-authorization-token --domain equipmentshare --domain-owner 696398453447 --query authorizationToken --output text) && aws codeartifact login --tool pip --repository dev --domain equipmentshare --domain-owner 696398453447'
+
 
 DEV_HOME="~/localdev"
 
@@ -8,6 +40,12 @@ IGNOREEOF=42
 alias ww='history | grep'
 alias ddd='(cd ~/localdev/deja-vu-app/ && PORT=9000 npm run start:dev)'
 alias edit_profile='code -n ~/.bash_profile'
+alias stagedb='(cd ~/localdev/quickDb && yarn stage)'
+alias proddb='(cd ~/localdev/quickDb && yarn prod)'
+alias driveproddb='(cd ~/localdev/quickDb && yarn drive_prod)'
+alias stagedbpw='(cd ~/localdev/quickDb && yarn stage_pw)'
+alias proddbpw='(cd ~/localdev/quickDb && yarn prod_pw)'
+alias driveproddbpw='(cd ~/localdev/quickDb && yarn drive_prod_pw)'
 
 
 # Colorize terminal
@@ -132,7 +170,10 @@ source ~/.secrets
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
-[ -r /Users/ethan/.bashrc ] && source /Users/ethan/.bashrc
-
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+export ANDROID_HOME=/Users/ethan.skinner@equipmentshare.com/Library/Android/sdk
 . "$HOME/.cargo/env"
+ 
+#  Code artefact auth
+#  pAuth

@@ -63,7 +63,7 @@ asterisk_column_order = table_order
 
 # Default pager.
 # By default 'PAGER' environment variable is used
-# pager = less -SRXF
+pager = less -SRXF
 
 # Timing of sql statments and table rendering.
 timing = True
@@ -91,7 +91,7 @@ vi = False
 on_error = STOP
 
 # Set threshold for row limit prompt. Use 0 to disable prompt.
-row_limit = 1000
+row_limit = 2000
 
 # Skip intro on startup and goodbye on exit
 less_chatty = True
@@ -130,6 +130,15 @@ Token.Toolbar.Arg.Text = 'nobold'
 
 # DNS to call by -D option
 [alias_dsn]
+
+# PGAPPNAME=ethan-skinner psql -h postgres-prod-cluster.cluster-ro-c7dn2dpvzjel.us-west-2.rds.amazonaws.com -U es_dev equipmentshare
+
+prod = 'postgresql://es_dev@postgres-prod-cluster.cluster-ro-c7dn2dpvzjel.us-west-2.rds.amazonaws.com/equipmentshare'
+prod_DANGER = 'postgresql://es_dev@postgres-prod-cluster.cluster-c7dn2dpvzjel.us-west-2.rds.amazonaws.com/equipmentshare'
+stage = 'postgresql://es_dev@postgres-stage.cluster-c7dn2dpvzjel.us-west-2.rds.amazonaws.com/equipmentshare'
+drive_prod = 'postgresql://es_dev@prod-apps-cluster.cluster-ro-c7dn2dpvzjel.us-west-2.rds.amazonaws.com/drive'
+
+
 # example_dsn = postgresql://[user[:password]@][netloc][:port][/dbname]
 
 # Format for number representation
